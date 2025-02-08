@@ -1,3 +1,10 @@
 .app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  flex: 1;
   text-align: center;
 }
