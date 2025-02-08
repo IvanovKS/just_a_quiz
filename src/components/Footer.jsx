@@ -7,6 +7,7 @@ function Footer() {
       <Link to="https://github.com/IvanovKS" target="_blank">
         go to Git
       </Link>
+      <button>Click</button>
     </footer>
   );
 }
