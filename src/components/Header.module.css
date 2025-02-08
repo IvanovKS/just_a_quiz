@@ -25,6 +25,7 @@
 
 .headerLeft img {
   width: 70px;
+  animation: avatarAnimation 10s infinite;
 }
 
 .headerCenter {
@@ -42,4 +43,19 @@
 
 .headerRight {
   flex: 0 0 20%;
+}
+
+@keyframes avatarAnimation {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
 }

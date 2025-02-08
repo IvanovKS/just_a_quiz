@@ -1,0 +1,10 @@
+.switcher {
+  background-color: inherit;
+  color: inherit;
+}
+
+.switcher:hover {
+  background-color: inherit;
+  color: inherit;
+  scale: 1.5;
+}

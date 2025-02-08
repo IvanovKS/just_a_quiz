@@ -12,6 +12,7 @@ h1 {
   font-weight: bold;
   color: var(--text-color);
   text-align: center;
+  font-family: 'Georgia', serif;
 }
 button {
   cursor: pointer;
