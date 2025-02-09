@@ -8,26 +8,6 @@ body {
 h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--text-color);
   text-align: center;
   font-family: 'Georgia', serif;
-}
-button {
-  cursor: pointer;
-  background-color: var(--button-color);
-  color: var(--button-text-color);
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-}
-button:hover {
-  background-color: var(--button-hover-color);
-}
-a {
-  text-decoration: none;
-  color: var(--link-color);
-  transition: color 0.2s;
-}
-a:hover {
-  color: var(--link-hover-color);
 }

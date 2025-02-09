@@ -1,11 +1,12 @@
 import React from 'react';
+import Lottie from 'lottie-react';
+import notFoundAnimation from '../../assets/animations/notFound.json';
 
 function NotFound() {
   return (
-    <div>
-      NotFound
-      <button>Click</button>
-    </div>
+    <>
+      <Lottie animationData={notFoundAnimation} loop={true} style={{ width: 300, height: 300 }}/>
+    </>
   );
 }
 
