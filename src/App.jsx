@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
-import Rules from './pages/Rules';
+import Winners from './pages/Winners';
 import NotFound from './pages/NotFound';
 import MainLayout from './layouts/MainLayout';
 import { ThemeContext } from './context/ThemeContext';
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Home />} />
               <Route path="quiz" element={<Quiz />} />
-              <Route path="rules" element={<Rules />} />
+              <Route path="winners" element={<Winners />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

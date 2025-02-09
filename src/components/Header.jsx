@@ -15,8 +15,8 @@ function Header() {
         <NavLink to="/" end>
           Go home
         </NavLink>
-        <NavLink to="/rules">Rules</NavLink>
         <NavLink to="/quiz">Quiz</NavLink>
+        <NavLink to="/winners">Winners</NavLink>
       </nav>
       <div className={styles.headerRight}>
         <ThemeSwitcher />
