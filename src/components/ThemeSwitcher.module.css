@@ -1,10 +1,8 @@
 .switcher {
-  background-color: inherit;
-  color: inherit;
+  transition: 0.2s;
+  scale: 2.0;
 }
 
 .switcher:hover {
-  background-color: inherit;
-  color: inherit;
-  scale: 1.5;
+  scale: 2.5;
 }

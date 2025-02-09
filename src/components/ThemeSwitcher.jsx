@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { FaSun } from 'react-icons/fa';
 import { MdOutlineDarkMode } from 'react-icons/md';
 import styles from './ThemeSwitcher.module.css';
+import { ThemeContext } from '../context/ThemeContext';
 
 function ThemeSwitcher() {
-  const [switcher, setSwitcher] = useState(true);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <div>
-      <button
-        className={styles.switcher}
-        onClick={() => setSwitcher(!switcher)}
-      >
-        {switcher === true ? <FaSun /> : <MdOutlineDarkMode />}
+      <button className={styles.switcher} onClick={toggleTheme}>
+        {theme === 'light' ? <FaSun /> : <MdOutlineDarkMode />}
       </button>
     </div>
   );

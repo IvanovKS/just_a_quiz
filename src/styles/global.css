@@ -1,45 +1,63 @@
-:root {
-  /* Светлая тема */
-  --background-color-light: #ffffff;
-  --text-color-light: #333333;
-  --button-color-light: #4caf50;
-  --button-hover-color-light: #388e3c;
-  --button-text-color-light: #ffffff;
-  --link-color-light: #2196f3;
-  --link-hover-color-light: #1976d2;
-
-  /* Тёмная тема */
-  --background-color-dark: #121212;
-  --text-color-dark: #f5f5f5;
-  --button-color-dark: #03a9f4;
-  --button-hover-color-dark: #0288d1;
-  --button-text-color-dark: #ffffff;
-  --link-color-dark: #03a9f4;
-  --link-hover-color-dark: #0288d1;
-
-  /* Тема по умолчанию: светлая */
-  --background-color: var(--background-color-light);
-  --text-color: var(--text-color-light);
-  --button-color: var(--button-color-light);
-  --button-hover-color: var(--button-hover-color-light);
-  --button-text-color: var(--button-text-color-light);
-  --link-color: var(--link-color-light);
-  --link-hover-color: var(--link-hover-color-light);
+.app.light {
+  background-color: #ffffff;
+  color: #333333;
 }
 
-/* Темная тема */
-.dark-mode {
-  --background-color: var(--background-color-dark);
-  --text-color: var(--text-color-dark);
-  --button-color: var(--button-color-dark);
-  --button-hover-color: var(--button-hover-color-dark);
-  --button-text-color: var(--button-text-color-dark);
-  --link-color: var(--link-color-dark);
-  --link-hover-color: var(--link-hover-color-dark);
+.app.light button {
+  background-color: #4caf50;
+  color: #ffffff;
 }
 
-/* Глобальные классы */
-.active {
-  color: red;
-  text-decoration: none;
+.app.light button:hover {
+  background-color: #388e3c;
+}
+
+.app.light a {
+  color: #03a9f4;
+}
+
+.app.light a:hover {
+  color: #1976d2;
+}
+
+.app.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.app.dark button {
+  background-color: #03a9f4;
+  color: #ffffff;
+}
+
+.app.dark button:hover {
+  background-color: #0288d1;
+}
+
+.app.dark a {
+  color: #a8f403;
+}
+
+.app.dark a:hover {
+  color: #d2d219;
+}
+
+.app.light a.active,
+.app.dark a.active {
+  color: #f55;
+  text-decoration: underline;
+}
+
+.dark button:not(.switcher),
+.dark button:not(.switcher):hover {
+  background-color: inherit;
+  color: white;
+  padding: 0;
+}
+
+.light button:not(.switcher),
+.light button:not(.switcher):hover {
+  background-color: inherit;
+  color: black;
+  padding: 0;
 }
