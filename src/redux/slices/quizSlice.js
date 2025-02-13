@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   difficulty: 'easy',
-  category: 'spots',
+  category: 'sports',
   questions: [],
 };
 
@@ -13,9 +13,12 @@ const quizSlice = createSlice({
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
     },
+    setCategory: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { setDifficulty } = quizSlice.actions;
+export const { setDifficulty, setCategory } = quizSlice.actions;
 
 export default quizSlice.reducer;
