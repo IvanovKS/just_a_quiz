@@ -1,12 +1,9 @@
 import React from 'react';
 import Radio from '../../components/Radio';
+import { useSelector } from 'react-redux';
 
 function Difficulty() {
-  const difficulties = [
-    { value: 'easy' },
-    { value: 'medium' },
-    { value: 'hard' },
-  ];
+  const difficulties = useSelector((state) => state.quiz.difficulties);
 
   return (
     <>

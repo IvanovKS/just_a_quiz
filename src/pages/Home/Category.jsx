@@ -1,12 +1,9 @@
 import React from 'react';
 import Radio from '../../components/Radio';
+import { useSelector } from 'react-redux';
 
 function Category() {
-  const categories = [
-    { value: 'sports' },
-    { value: 'animal' },
-    { value: 'art' },
-  ];
+  const categories = useSelector((state) => state.quiz.categories);
 
   return (
     <>

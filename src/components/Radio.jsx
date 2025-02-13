@@ -17,9 +17,9 @@ function Radio({ name, options }) {
 
   return (
     <div className={styles.radioContainer}>
-      {options.map((elem, index) => {
+      {options.map((elem) => {
         return (
-          <div key={index}>
+          <div key={elem.id}>
             <input
               type="radio"
               id={elem.value}
