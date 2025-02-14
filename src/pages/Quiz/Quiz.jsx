@@ -1,39 +1,46 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import NotFound from '../NotFound/NotFound';
+import Spinner from '../../components/Spinner';
 import selectedCategory from '../../utils/selectedCategory';
-import { useSelector } from 'react-redux';
+import { setQuestions } from '../../redux/slices/quizSlice';
 
 function Quiz() {
+  const dispatch = useDispatch();
   const difficulty = useSelector((state) => state.quiz.difficulty);
   const category = useSelector((state) => state.quiz.category);
+  const questions = useSelector((state) => state.quiz.questions);
 
-  const [newQuiz, setNewQuiz] = useState({ results: [] });
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    console.log(category, difficulty);
+    setIsLoading(true);
     fetch(
       `https://opentdb.com/api.php?amount=10&category=${selectedCategory(
         category
       )}&difficulty=${difficulty}`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((json) => {
-        setNewQuiz(json);
+        dispatch(setQuestions(json.results));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error.message);
         setError(true);
       });
-  }, [category, difficulty]);
+  }, [category, difficulty, dispatch]);
 
   return (
     <div>
-      {error ? (
+      {isLoading ? (
+        <Spinner />
+      ) : error ? (
         <NotFound />
       ) : (
-        newQuiz.results?.map((elem, index) => (
-          <p key={index}>{elem.question}</p>
-        ))
+        questions?.map((elem, index) => <p key={index}>{elem.question}</p>)
       )}
     </div>
   );
