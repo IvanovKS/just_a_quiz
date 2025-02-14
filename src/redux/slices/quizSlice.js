@@ -15,7 +15,6 @@ const initialState = {
     { id: uuidv4(), value: 'art' },
   ],
   questions: [],
-  currentQuestionIndex: 0,
   answers: [],
 };
 

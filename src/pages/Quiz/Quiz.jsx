@@ -9,10 +9,12 @@ function Quiz() {
   const dispatch = useDispatch();
   const difficulty = useSelector((state) => state.quiz.difficulty);
   const category = useSelector((state) => state.quiz.category);
-  const questions = useSelector((state) => state.quiz.questions);
+  const questions = useSelector((state) => state.quiz.questions) || [];
 
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
   useEffect(() => {
     setIsLoading(true);
     fetch(
@@ -25,6 +27,7 @@ function Quiz() {
       })
       .then((json) => {
         dispatch(setQuestions(json.results));
+        setCurrentQuestionIndex(0);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -39,8 +42,15 @@ function Quiz() {
         <Spinner />
       ) : error ? (
         <NotFound />
+      ) : questions.length === 0 ? (
+        <NotFound />
       ) : (
-        questions?.map((elem, index) => <p key={index}>{elem.question}</p>)
+        <div>
+          <p>{`question №${currentQuestionIndex + 1} from ${
+            questions.length
+          }`}</p>
+          <p>{questions[currentQuestionIndex].question}</p>
+        </div>
       )}
     </div>
   );
