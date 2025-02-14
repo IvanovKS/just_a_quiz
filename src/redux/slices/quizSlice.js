@@ -11,7 +11,7 @@ const initialState = {
   category: 'sports',
   categories: [
     { id: uuidv4(), value: 'sports' },
-    { id: uuidv4(), value: 'animal' },
+    { id: uuidv4(), value: 'animals' },
     { id: uuidv4(), value: 'art' },
   ],
   questions: [],
