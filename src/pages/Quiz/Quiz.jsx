@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import NotFound from '../NotFound/NotFound';
 import Spinner from '../../components/Spinner';
+import Progress from './Progress';
 import selectedCategory from '../../utils/selectedCategory';
+import getShuffledAnswers from '../../utils/getShuffledAnswers';
 import { setQuestions } from '../../redux/slices/quizSlice';
 
 function Quiz() {
@@ -29,12 +31,20 @@ function Quiz() {
         dispatch(setQuestions(json.results));
         setCurrentQuestionIndex(0);
         setIsLoading(false);
+        if (json.results.length > 0) {
+          const currentQuestion = json.results[currentQuestionIndex];
+          const answers = getShuffledAnswers(
+            currentQuestion.correct_answer,
+            currentQuestion.incorrect_answers
+          );
+          console.log(answers);
+        }
       })
       .catch((error) => {
         console.log(error.message);
         setError(true);
       });
-  }, [category, difficulty, dispatch]);
+  }, [category, difficulty, dispatch, currentQuestionIndex]);
 
   return (
     <div>
@@ -46,9 +56,10 @@ function Quiz() {
         <NotFound />
       ) : (
         <div>
-          <p>{`question №${currentQuestionIndex + 1} from ${
-            questions.length
-          }`}</p>
+          <Progress
+            length={questions.length}
+            currentIndex={currentQuestionIndex + 1}
+          />
           <p>{questions[currentQuestionIndex].question}</p>
         </div>
       )}

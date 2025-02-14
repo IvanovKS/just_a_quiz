@@ -15,7 +15,7 @@ const initialState = {
     { id: uuidv4(), value: 'art' },
   ],
   questions: [],
-  answers: [],
+  userAnswers: [],
 };
 
 const quizSlice = createSlice({
@@ -31,9 +31,13 @@ const quizSlice = createSlice({
     setQuestions: (state, action) => {
       state.questions = action.payload;
     },
+    setUserAnswers: (state, action) => {
+      state.userAnswers = action.payload;
+    },
   },
 });
 
-export const { setDifficulty, setCategory, setQuestions } = quizSlice.actions;
+export const { setDifficulty, setCategory, setQuestions, setUserAnswers } =
+  quizSlice.actions;
 
 export default quizSlice.reducer;
