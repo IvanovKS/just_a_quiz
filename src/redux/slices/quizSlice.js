@@ -32,7 +32,7 @@ const quizSlice = createSlice({
       state.questions = action.payload;
     },
     setUserAnswers: (state, action) => {
-      state.userAnswers = action.payload;
+      state.userAnswers.push(action.payload);
     },
   },
 });

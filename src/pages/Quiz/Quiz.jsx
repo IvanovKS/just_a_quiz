@@ -7,7 +7,7 @@ import CurrentAnswers from './CurrentAnswers';
 import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
 import addParser from '../../utils/addParser';
-import { setQuestions } from '../../redux/slices/quizSlice';
+import { setQuestions, setUserAnswers } from '../../redux/slices/quizSlice';
 
 function Quiz() {
   const dispatch = useDispatch();
@@ -86,6 +86,7 @@ function Quiz() {
                 if (currentQuestionIndex < questions.length - 1) {
                   setCurrentQuestionIndex((prev) => prev + 1);
                   setSelectedAnswer(null);
+                  dispatch(setUserAnswers(selectedAnswer));
                 }
               }}
             >

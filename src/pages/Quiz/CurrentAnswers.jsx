@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './CurrentAnswers.module.css'
+import styles from './CurrentAnswers.module.css';
+import addParser from '../../utils/addParser';
 
 function CurrentAnswers({ answers, onChange, selectedAnswer }) {
   return (
@@ -14,7 +15,7 @@ function CurrentAnswers({ answers, onChange, selectedAnswer }) {
             checked={selectedAnswer === elem}
             onChange={() => onChange(elem)}
           />
-          <label htmlFor={`answer-${index}`}>{elem}</label>
+          <label htmlFor={`answer-${index}`}>{addParser(elem)}</label>
         </div>
       ))}
     </div>
