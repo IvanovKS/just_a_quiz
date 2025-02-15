@@ -34,10 +34,18 @@ const quizSlice = createSlice({
     setUserAnswers: (state, action) => {
       state.userAnswers.push(action.payload);
     },
+    setResetUserAnswers: (state) => {
+      state.userAnswers = [];
+    },
   },
 });
 
-export const { setDifficulty, setCategory, setQuestions, setUserAnswers } =
-  quizSlice.actions;
+export const {
+  setDifficulty,
+  setCategory,
+  setQuestions,
+  setUserAnswers,
+  setResetUserAnswers,
+} = quizSlice.actions;
 
 export default quizSlice.reducer;

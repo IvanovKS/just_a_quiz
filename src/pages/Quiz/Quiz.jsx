@@ -7,7 +7,11 @@ import CurrentAnswers from './CurrentAnswers';
 import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
 import addParser from '../../utils/addParser';
-import { setQuestions, setUserAnswers } from '../../redux/slices/quizSlice';
+import {
+  setQuestions,
+  setUserAnswers,
+  setResetUserAnswers,
+} from '../../redux/slices/quizSlice';
 
 function Quiz() {
   const dispatch = useDispatch();
@@ -83,14 +87,18 @@ function Quiz() {
           {selectedAnswer && (
             <button
               onClick={() => {
+                dispatch(setUserAnswers(selectedAnswer));
                 if (currentQuestionIndex < questions.length - 1) {
                   setCurrentQuestionIndex((prev) => prev + 1);
                   setSelectedAnswer(null);
-                  dispatch(setUserAnswers(selectedAnswer));
+                } else {
+                  dispatch(setResetUserAnswers());
                 }
               }}
             >
-              Next Question
+              {currentQuestionIndex < questions.length - 1
+                ? 'Next Question'
+                : 'Finish Quiz'}
             </button>
           )}
         </div>
