@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
 import Spinner from '../../components/Spinner';
 import Progress from './Progress';
+import Modal from './Modal';
 import CurrentAnswers from './CurrentAnswers';
 import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
+import getScore from '../../utils/getScore';
 import addParser from '../../utils/addParser';
 import {
   setQuestions,
@@ -18,12 +21,14 @@ function Quiz() {
   const difficulty = useSelector((state) => state.quiz.difficulty);
   const category = useSelector((state) => state.quiz.category);
   const questions = useSelector((state) => state.quiz.questions);
+  const userAnswers = useSelector((state) => state.quiz.userAnswers);
 
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [isQuizFinished, setIsQuizFinished] = useState(false);
 
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
@@ -40,6 +45,7 @@ function Quiz() {
         return res.json();
       })
       .then((json) => {
+        dispatch(setResetUserAnswers());
         dispatch(setQuestions(json.results || []));
         setCurrentQuestionIndex(0);
         setIsLoading(false);
@@ -92,7 +98,7 @@ function Quiz() {
                   setCurrentQuestionIndex((prev) => prev + 1);
                   setSelectedAnswer(null);
                 } else {
-                  dispatch(setResetUserAnswers());
+                  setIsQuizFinished(true);
                 }
               }}
             >
@@ -100,6 +106,17 @@ function Quiz() {
                 ? 'Next Question'
                 : 'Finish Quiz'}
             </button>
+          )}
+          {isQuizFinished && (
+            <Modal>
+              <h2>The quiz is over</h2>
+              <p>
+                {/* ИСПРАВИТЬ КОЛИЧЕСТВО ПРАВИЛЬНЫХ ОТВЕТОВ (функцию getScore, вместо массива questions передать массив correct answers), СТИЛИ ДЛЯ МОДАЛКИ*/}
+                Correct answers: {getScore(questions, userAnswers)} from{' '}
+                {questions.length}
+              </p>
+              <Link to="/">Go home</Link>
+            </Modal>
           )}
         </div>
       )}
