@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './CurrentAnswers.module.css'
 
 function CurrentAnswers({ answers, onChange, selectedAnswer }) {
   return (
-    <>
+    <div className={styles.currentAnswers}>
       {answers.map((elem, index) => (
         <div key={index}>
           <input
@@ -16,7 +17,7 @@ function CurrentAnswers({ answers, onChange, selectedAnswer }) {
           <label htmlFor={`answer-${index}`}>{elem}</label>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

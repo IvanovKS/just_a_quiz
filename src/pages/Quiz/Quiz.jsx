@@ -6,6 +6,7 @@ import Progress from './Progress';
 import CurrentAnswers from './CurrentAnswers';
 import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
+import addParser from '../../utils/addParser';
 import { setQuestions } from '../../redux/slices/quizSlice';
 
 function Quiz() {
@@ -73,7 +74,7 @@ function Quiz() {
             length={questions.length}
             currentIndex={currentQuestionIndex + 1}
           />
-          <p>{questions[currentQuestionIndex].question}</p>
+          <p>{addParser(questions[currentQuestionIndex].question)}</p>
           <CurrentAnswers
             answers={answers}
             selectedAnswer={selectedAnswer}
