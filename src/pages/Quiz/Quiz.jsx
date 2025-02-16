@@ -10,6 +10,7 @@ import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
 import getScore from '../../utils/getScore';
 import addParser from '../../utils/addParser';
+import getArrayOfCorrectAnswers from '../../utils/getArrayOfCorrectAnswers';
 import {
   setQuestions,
   setUserAnswers,
@@ -111,8 +112,8 @@ function Quiz() {
             <Modal>
               <h2>The quiz is over</h2>
               <p>
-                {/* ИСПРАВИТЬ КОЛИЧЕСТВО ПРАВИЛЬНЫХ ОТВЕТОВ (функцию getScore, вместо массива questions передать массив correct answers), СТИЛИ ДЛЯ МОДАЛКИ*/}
-                Correct answers: {getScore(questions, userAnswers)} from{' '}
+                Correct answers:{' '}
+                {getScore(getArrayOfCorrectAnswers(questions), userAnswers)} from{' '}
                 {questions.length}
               </p>
               <Link to="/">Go home</Link>
