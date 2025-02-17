@@ -5,6 +5,7 @@ import NotFound from '../NotFound/NotFound';
 import Spinner from '../../components/Spinner';
 import Progress from './Progress';
 import Modal from './Modal';
+import Button from './Button';
 import CurrentAnswers from './CurrentAnswers';
 import selectedCategory from '../../utils/selectedCategory';
 import getShuffledAnswers from '../../utils/getShuffledAnswers';
@@ -33,6 +34,16 @@ function Quiz() {
 
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
+  };
+
+  const handleClick = () => {
+    dispatch(setUserAnswers(selectedAnswer));
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex((prev) => prev + 1);
+      setSelectedAnswer(null);
+    } else {
+      setIsQuizFinished(true);
+    }
   };
 
   useEffect(() => {
@@ -92,29 +103,19 @@ function Quiz() {
             onChange={handleAnswerChange}
           />
           {selectedAnswer && (
-            <button
-              onClick={() => {
-                dispatch(setUserAnswers(selectedAnswer));
-                if (currentQuestionIndex < questions.length - 1) {
-                  setCurrentQuestionIndex((prev) => prev + 1);
-                  setSelectedAnswer(null);
-                } else {
-                  setIsQuizFinished(true);
-                }
-              }}
-            >
+            <Button onClick={() => handleClick()}>
               {currentQuestionIndex < questions.length - 1
                 ? 'Next Question'
                 : 'Finish Quiz'}
-            </button>
+            </Button>
           )}
           {isQuizFinished && (
             <Modal>
               <h2>The quiz is over</h2>
               <p>
                 Correct answers:{' '}
-                {getScore(getArrayOfCorrectAnswers(questions), userAnswers)} from{' '}
-                {questions.length}
+                {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}{' '}
+                from {questions.length}
               </p>
               <Link to="/">Go home</Link>
             </Modal>
