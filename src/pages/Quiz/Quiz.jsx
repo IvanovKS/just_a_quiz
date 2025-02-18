@@ -31,6 +31,7 @@ function Quiz() {
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
+  const [playerName, setPlayerName] = useState('');
 
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
@@ -111,7 +112,14 @@ function Quiz() {
           )}
           {isQuizFinished && (
             <Modal>
-              <h2>The quiz is over</h2>
+              <h2>The quiz is over. Enter your name</h2>
+              <input
+                type="text"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                placeholder="Enter your name"
+              />
+              <button onClick={() => console.log(playerName)}>Save</button>
               <p>
                 Correct answers:{' '}
                 {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}{' '}
