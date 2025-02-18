@@ -19,6 +19,7 @@
 
 .modal p {
   margin: 20px;
+  color: rgb(25, 63, 211);
 }
 
 .modal a {
@@ -26,7 +27,7 @@
   border: none;
   cursor: pointer;
   background: #f55;
-  color: white;
+  color: rgb(25, 63, 211);
   border-radius: 5px;
 }
 

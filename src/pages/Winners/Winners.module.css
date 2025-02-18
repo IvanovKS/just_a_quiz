@@ -1,0 +1,8 @@
+.winnerAnimation {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+}
