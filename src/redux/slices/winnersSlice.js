@@ -6,19 +6,19 @@ const initialState = {
     easy: [
       {
         name: '-',
-        score: 0,
+        score: 10,
       },
     ],
     medium: [
       {
         name: '-',
-        score: 0,
+        score: 50,
       },
     ],
     hard: [
       {
         name: '-',
-        score: 0,
+        score: 90,
       },
     ],
   },
