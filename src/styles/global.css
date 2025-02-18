@@ -49,6 +49,7 @@
 }
 
 .dark button:not(.switcher),
+.dark button:not([class*="button"]),
 .dark button:not(.switcher):hover {
   background-color: inherit;
   color: white;

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Radio.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory, setDifficulty } from '../redux/slices/quizSlice';
 
 function Radio({ name, options }) {
-  const [selectedOptionRadio, setSelectedOptionRadio] = useState(
-    options[0].value
-  );
+  const dispatch = useDispatch();
+
+  const selectedOption = useSelector((state) => {
+    return name === 'difficulty' ? state.quiz.difficulty : state.quiz.category;
+  });
 
   const handleChangeRadio = (event) => {
-    setSelectedOptionRadio(event.target.value);
+    const action = name === 'difficulty' ? setDifficulty : setCategory;
+    dispatch(action(event.target.value));
   };
 
   return (
@@ -20,7 +25,7 @@ function Radio({ name, options }) {
               id={elem.value}
               name={name}
               value={elem.value}
-              checked={selectedOptionRadio === elem.value}
+              checked={selectedOption === elem.value}
               onChange={handleChangeRadio}
             />
             <label htmlFor={elem.value}>{elem.value}</label>
