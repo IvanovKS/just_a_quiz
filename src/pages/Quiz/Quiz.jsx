@@ -17,6 +17,7 @@ import {
   setUserAnswers,
   setResetUserAnswers,
 } from '../../redux/slices/quizSlice';
+import { addPlayerResults } from '../../redux/slices/winnersSlice.js';
 
 function Quiz() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function Quiz() {
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
+  const [playerName, setPlayerName] = useState('');
 
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
@@ -111,7 +113,29 @@ function Quiz() {
           )}
           {isQuizFinished && (
             <Modal>
-              <h2>The quiz is over</h2>
+              <h2>The quiz is over. Enter your name</h2>
+              <input
+                type="text"
+                value={playerName}
+                onChange={(e) => setPlayerName(e.target.value)}
+                placeholder="Enter your name"
+              />
+              <button
+                onClick={() =>
+                  dispatch(
+                    addPlayerResults({
+                      name: playerName,
+                      score: getScore(
+                        getArrayOfCorrectAnswers(questions),
+                        userAnswers
+                      ),
+                      difficulty,
+                    })
+                  )
+                }
+              >
+                Save
+              </button>
               <p>
                 Correct answers:{' '}
                 {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}{' '}

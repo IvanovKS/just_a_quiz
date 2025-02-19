@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
+import WinnersTable from './WinnersTable';
 import winnerAnimation from '../../assets/animations/winnerAnimation.json';
 import styles from './Winners.module.css';
 
@@ -15,13 +16,14 @@ function Winners() {
   return (
     <>
       {showWinners ? (
-        <Lottie className={styles.winnerAnimation}
+        <Lottie
+          className={styles.winnerAnimation}
           animationData={winnerAnimation}
           loop={false}
           style={{ width: 200, height: 200 }}
         />
       ) : (
-        <p>Winners</p>
+        <WinnersTable />
       )}
     </>
   );
