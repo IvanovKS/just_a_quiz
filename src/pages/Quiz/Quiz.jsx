@@ -17,6 +17,7 @@ import {
   setUserAnswers,
   setResetUserAnswers,
 } from '../../redux/slices/quizSlice';
+import { addPlayerResults } from '../../redux/slices/winnersSlice.js';
 
 function Quiz() {
   const dispatch = useDispatch();
@@ -119,7 +120,22 @@ function Quiz() {
                 onChange={(e) => setPlayerName(e.target.value)}
                 placeholder="Enter your name"
               />
-              <button onClick={() => console.log(playerName)}>Save</button>
+              <button
+                onClick={() =>
+                  dispatch(
+                    addPlayerResults({
+                      name: playerName,
+                      score: getScore(
+                        getArrayOfCorrectAnswers(questions),
+                        userAnswers
+                      ),
+                      difficulty,
+                    })
+                  )
+                }
+              >
+                Save
+              </button>
               <p>
                 Correct answers:{' '}
                 {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}{' '}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function WinnersTable() {
-  const winners = useSelector((state) => state.winners.leaders);
+  const winners = useSelector((state) => state.winners.leaders || { easy: [], medium: [], hard: [] });
   const difficulties = useSelector((state) => state.quiz.difficulties);
 
   return (
@@ -12,9 +12,9 @@ function WinnersTable() {
           <div key={elem.id}>
             <h2>Top leaders of {elem.value} level</h2>
             <ul>
-              {winners[elem.value].map((elem, index) => (
+              {winners[elem.value]?.map((elem, index) => (
                 <li key={index}>
-                  {index + 1}. {elem.name} — {elem.score}%
+                  {index + 1}. {elem.name} — {elem.score * 10}%
                 </li>
               ))}
             </ul>
