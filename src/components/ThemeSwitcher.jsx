@@ -10,7 +10,11 @@ function ThemeSwitcher() {
   return (
     <div>
       <button className={styles.switcher} onClick={toggleTheme}>
-        {theme === 'light' ? <FaSun /> : <MdOutlineDarkMode />}
+        {theme === 'light' ? (
+          <FaSun />
+        ) : (
+          <MdOutlineDarkMode style={{ color: 'white' }} />
+        )}
       </button>
     </div>
   );

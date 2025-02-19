@@ -1,4 +1,14 @@
 .button {
-  background-color: #03a9f4;
-  color: #e42424;
+  background-color: #f55;
+  color: inherit;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgb(255, 168, 168);
+}
+
+.button:active {
+  background-color: inherit;
 }

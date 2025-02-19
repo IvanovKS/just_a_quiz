@@ -1,6 +1,6 @@
 .switcher {
   transition: 0.2s;
-  scale: 2.0;
+  scale: 2;
 }
 
 .switcher:hover {
