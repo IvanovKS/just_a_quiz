@@ -4,11 +4,11 @@
 }
 
 .app.light a {
-  color: #03a9f4;
+  color: #13b4ff;
 }
 
 .app.light a:hover {
-  color: #1976d2;
+  color: rgb(255, 168, 168);
 }
 
 .app.dark {
@@ -17,11 +17,11 @@
 }
 
 .app.dark a {
-  color: #a8f403;
+  color: #71d2ff;
 }
 
 .app.dark a:hover {
-  color: #d2d219;
+  color: rgb(255, 168, 168);
 }
 
 .app.light a.active,
