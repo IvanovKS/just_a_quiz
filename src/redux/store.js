@@ -14,7 +14,7 @@ const store = configureStore({
 store.subscribe(() => {
   try {
     const state = store.getState();
-    localStorage.setItem('leaders', JSON.stringify(state.winners));
+    localStorage.setItem('leaders', JSON.stringify(state.winners.leaders));
   } catch (error) {
     console.error('error in localStage', error);
   }

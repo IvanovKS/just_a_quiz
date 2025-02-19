@@ -2,7 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function WinnersTable() {
-  const winners = useSelector((state) => state.winners.leaders || { easy: [], medium: [], hard: [] });
+  const winners = useSelector(
+    (state) => state.winners.leaders || { easy: [], medium: [], hard: [] }
+  );
+  console.log(winners, 'win');
   const difficulties = useSelector((state) => state.quiz.difficulties);
 
   return (

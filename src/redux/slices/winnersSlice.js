@@ -3,8 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 export const loadFromLocalStorage = () => {
   try {
     const data = localStorage.getItem('leaders');
-    console.log(data);
-    return data ? JSON.parse(data) : { easy: [], medium: [], hard: [] };
+    console.log('LocalStorage', data);
+    const parsedData = data ? JSON.parse(data) : null;
+
+    return parsedData && typeof parsedData === 'object'
+      ? {
+          easy: parsedData.easy || [],
+          medium: parsedData.medium || [],
+          hard: parsedData.hard || [],
+        }
+      : { easy: [], medium: [], hard: [] };
   } catch (error) {
     console.error('Error', error);
     return { easy: [], medium: [], hard: [] };
