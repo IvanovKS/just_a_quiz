@@ -33,9 +33,21 @@ function Quiz() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
   const [playerName, setPlayerName] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleAnswerChange = (answer) => {
     setSelectedAnswer(answer);
+  };
+
+  const handleClickModal = () => {
+    dispatch(
+      addPlayerResults({
+        name: playerName,
+        score: getScore(getArrayOfCorrectAnswers(questions), userAnswers),
+        difficulty,
+      })
+    );
+    setIsDisabled(true);
   };
 
   const handleClick = () => {
@@ -120,20 +132,7 @@ function Quiz() {
                 onChange={(e) => setPlayerName(e.target.value.trim())}
                 placeholder="Enter your name"
               />
-              <button
-                onClick={() =>
-                  dispatch(
-                    addPlayerResults({
-                      name: playerName,
-                      score: getScore(
-                        getArrayOfCorrectAnswers(questions),
-                        userAnswers
-                      ),
-                      difficulty,
-                    })
-                  )
-                }
-              >
+              <button onClick={handleClickModal} disabled={isDisabled}>
                 Save
               </button>
               <p>
