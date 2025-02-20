@@ -117,7 +117,7 @@ function Quiz() {
               <input
                 type="text"
                 value={playerName}
-                onChange={(e) => setPlayerName(e.target.value)}
+                onChange={(e) => setPlayerName(e.target.value.trim())}
                 placeholder="Enter your name"
               />
               <button

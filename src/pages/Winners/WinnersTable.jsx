@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styles from './WinnersTable.module.css';
 
 function WinnersTable() {
   const winners = useSelector(
@@ -19,7 +20,7 @@ function WinnersTable() {
                 <h2>Top leaders of {elem.value} level</h2>
                 <ul>
                   {winners[elem.value]?.map((elem, index) => (
-                    <li key={index}>
+                    <li className={styles.winnersList} key={index}>
                       {index + 1}. {elem.name} — {elem.score * 10}%
                     </li>
                   ))}
