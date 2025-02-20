@@ -138,8 +138,10 @@ function Quiz() {
               </button>
               <p>
                 Correct answers:{' '}
-                {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}{' '}
-                from {questions.length}
+                <span>
+                  {getScore(getArrayOfCorrectAnswers(questions), userAnswers)}
+                </span>{' '}
+                from <span>{questions.length}</span>
               </p>
               <Link to="/">Go home</Link>
             </Modal>

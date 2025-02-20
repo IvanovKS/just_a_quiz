@@ -17,20 +17,64 @@
   text-align: center;
 }
 
+.modal h2 {
+  color: #13b4ff;
+  margin-bottom: 10px;
+}
+
 .modal p {
   margin: 20px;
-  color: rgb(25, 63, 211);
+  color: black;
+}
+
+.modal span {
+  color: #f55;
+  font-size: 1.2rem;
 }
 
 .modal a {
-  padding: 10px 15px;
+  padding: 10px;
   border: none;
   cursor: pointer;
-  background: #f55;
-  color: rgb(25, 63, 211);
+  background: rgb(53 48 48);
   border-radius: 5px;
 }
 
 .modal a:hover {
-  background: rgb(255, 168, 168);
+  color: rgb(255, 168, 168);
+}
+
+.modal input {
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal input:focus {
+  border-color: #13b4ff;
+}
+
+.modal button {
+  margin-left: 10px;
+  display: inline-block;
+  padding: 15px;
+  font-size: 16px;
+  color: white;
+  background: #13b4ff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+.modal button:active {
+  color: white;
+  background: linear-gradient(135deg, #007bff, #0056b3);
 }
