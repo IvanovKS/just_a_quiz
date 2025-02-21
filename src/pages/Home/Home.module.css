@@ -32,3 +32,21 @@
 .homeRight h3 {
   margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+  .homeLeft {
+    flex: 0 0 25%;
+  }
+  .homeCenter {
+    flex: 0 0 25%;
+  }
+  .homeRight {
+    flex: 0 0 25%;
+  }
+}
+
+@media (max-width: 645px) {
+  .homeCenter {
+    display: none;
+  }
+}
